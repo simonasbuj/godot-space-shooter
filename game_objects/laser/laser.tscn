@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3pqgkbxy820d"]
+
+[ext_resource type="Script" path="res://game_objects/laser/laser.gd" id="1_pkgye"]
+[ext_resource type="AudioStream" uid="uid://c21mwgnksrva8" path="res://game_objects/laser/laser-45816.mp3" id="2_oceu8"]
+[ext_resource type="AudioStream" uid="uid://cihc7btxrhhx4" path="res://game_objects/enemy/enemy-explosion.wav" id="3_uww0j"]
+[ext_resource type="Texture2D" uid="uid://djuqyp3f2s4nl" path="res://game_objects/laser/laserBlue16.png" id="4_pafsh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_86row"]
+size = Vector2(13, 54)
+
+[node name="Laser" type="Area2D"]
+script = ExtResource("1_pkgye")
+shooting_sound = ExtResource("2_oceu8")
+explosion_sound = ExtResource("3_uww0j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("4_pafsh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_86row")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
